@@ -1,6 +1,8 @@
 # Puppet kibana3
 
-## Example usage
+## Build status
+
+[![Build Status](https://travis-ci.org/arioch/puppet-kibana3.png?branch=master)](https://travis-ci.org/arioch/puppet-kibana3)
 
 ### Install kibana3
 
