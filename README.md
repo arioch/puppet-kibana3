@@ -20,6 +20,30 @@
       }
     }
 
+## Build package
+
+    PKG_VERSION=$(date '+%Y%m%d%H%M')
+    wget https://github.com/elasticsearch/kibana/archive/master.tar.gz
+    mkdir -p build/usr/share
+    tar xvzf master.tar.gz
+    mv kibana-master build/usr/share/kibana3
+
+    cat << 'EOF' > post-install
+    #!/bin/sh
+    chown -R www-data:www-data /usr/share/kibana3
+    EOF
+
+    fpm -s dir -t deb \
+      --architecture all \
+      -n kibana3 \
+      -v ${PKG_VERSION} \
+      --prefix / \
+      --after-install post-install \
+      -C build usr
+
+There's obviously room for improvement, I just wanted to show you a quick and
+dirty example how to create a Kibana3 package for development purposes.
+
 ## Contributing
 
 * Fork it
