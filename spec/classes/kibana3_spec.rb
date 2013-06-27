@@ -113,23 +113,31 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  #describe 'on Debian with parameter: pkg_ensure' do
-  #  let (:params) { { :pkg_ensure => '_VALUE_' } }
-  #
-  #  it {
-  #    should contain_package('kibana3').with(
-  #      'ensure' => '_VALUE_'
-  #    )
-  #  }
-  #end
+  describe 'on Debian with parameter: pkg_ensure' do
+    let (:params) { { :pkg_ensure => '_VALUE_' } }
 
-  #describe 'on Debian with parameter: pkg_list' do
-  #  let (:params) { { :pkg_list => '_VALUE_' } }
-  #
-  #  it {
-  #    should contain_package('_VALUE_')
-  #  }
-  #end
+    it {
+      should contain_package('kibana3').with(
+        'ensure' => '_VALUE_'
+      )
+    }
+  end
+
+  describe 'on Debian with parameter: pkg_deps' do
+    let (:params) { { :pkg_deps => '_VALUE_' } }
+
+    it {
+      should contain_package('_VALUE_')
+    }
+  end
+
+  describe 'on Debian with parameter: pkg_list' do
+    let (:params) { { :pkg_list => '_VALUE_' } }
+
+    it {
+      should contain_package('_VALUE_')
+    }
+  end
 
   describe 'on Debian with parameter: service_name' do
     let (:params) { { :service_name => '_VALUE_' } }
