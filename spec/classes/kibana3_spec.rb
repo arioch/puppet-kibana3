@@ -19,6 +19,30 @@ describe 'kibana3', :type => :class do
     it { should contain_file('/usr/share/kibana3').with_ensure('directory') }
   end
 
+  describe 'on Debian with parameter: config_dir' do
+    let (:params) { { :config_dir => '_VALUE_' } }
+
+    it {
+      should contain_file('_VALUE_').with(
+        'ensure'  => 'directory'
+      )
+    }
+
+    it {
+      should contain_file('_VALUE_/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /DocumentRoot.*_VALUE_/
+      )
+    }
+
+    it {
+      should contain_file('_VALUE_/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /<Directory.*_VALUE_.*>/
+      )
+    }
+  end
+
   describe 'on Debian with parameter: config_file' do
     let (:params) { { :config_file => '_VALUE_' } }
 
@@ -89,6 +113,27 @@ describe 'kibana3', :type => :class do
         'content' => /elasticsearch:.*_VALUE_:/
       )
     }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /http:\/\/.*_VALUE_:/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /ProxyPassMatch.*_VALUE_:/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /ProxyPassReverse.*_VALUE_:/
+      )
+    }
   end
 
   describe 'on Debian with parameter: elasticsearch_index' do
@@ -109,6 +154,51 @@ describe 'kibana3', :type => :class do
       should contain_file('/usr/share/kibana3/config.js').with(
         'ensure'  => 'present',
         'content' => /elasticsearch:.*:_VALUE_/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /:_VALUE_/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /ProxyPassMatch.*:_VALUE_/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /ProxyPassReverse.*:_VALUE_/
+      )
+    }
+  end
+
+  describe 'on Debian with parameter: log_dir' do
+    let (:params) { { :log_dir => '_VALUE_' } }
+
+    it {
+      should contain_file('_VALUE_').with(
+        'ensure' => 'directory'
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /ErrorLog.*_VALUE_/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /CustomLog.*_VALUE_/
       )
     }
   end
