@@ -43,6 +43,38 @@ describe 'kibana3', :type => :class do
     }
   end
 
+  describe 'on Debian with parameter: config_dir_mode' do
+    let (:params) {
+      {
+        :config_dir      => '_CONFIG_DIR_',
+        :config_dir_mode => '_VALUE_'
+      }
+    }
+
+    it {
+      should contain_file('_CONFIG_DIR_').with(
+        'ensure' => 'directory',
+        'mode'   => '_VALUE_'
+      )
+    }
+  end
+
+  describe 'on Debian with parameter: config_dir_recurse' do
+    let (:params) {
+      {
+        :config_dir         => '_CONFIG_DIR_',
+        :config_dir_recurse => true
+      }
+    }
+
+    it {
+      should contain_file('_CONFIG_DIR_').with(
+        'ensure'  => 'directory',
+        'recurse' => true
+      )
+    }
+  end
+
   describe 'on Debian with parameter: config_file' do
     let (:params) { { :config_file => '_VALUE_' } }
 
@@ -74,12 +106,44 @@ describe 'kibana3', :type => :class do
     }
   end
 
+  describe 'on Debian with parameter: config_dir_recurse' do
+    let (:params) {
+      {
+        :config_dir         => '_CONFIG_DIR_',
+        :config_dir_recurse => true
+      }
+    }
+
+    it {
+      should contain_file('_CONFIG_DIR_').with(
+        'ensure'  => 'directory',
+        'recurse' => true
+      )
+    }
+  end
+
   describe 'on Debian with parameter: config_user' do
     let (:params) { { :config_user => '_VALUE_' } }
 
     it {
       should contain_file('/usr/share/kibana3/config.js').with(
         'owner' => '_VALUE_'
+      )
+    }
+  end
+
+  describe 'on Debian with parameter: config_purge' do
+    let (:params) {
+      {
+        :config_dir   => '_CONFIG_DIR_',
+        :config_purge => true
+      }
+    }
+
+    it {
+      should contain_file('_CONFIG_DIR_').with(
+        'ensure' => 'directory',
+        'purge'  => true
       )
     }
   end
@@ -203,6 +267,14 @@ describe 'kibana3', :type => :class do
     }
   end
 
+  describe 'on Debian with parameter: pkg_deps' do
+    let (:params) { { :pkg_deps => '_VALUE_' } }
+
+    it {
+      should contain_package('_VALUE_')
+    }
+  end
+
   describe 'on Debian with parameter: pkg_ensure' do
     let (:params) { { :pkg_ensure => '_VALUE_' } }
 
@@ -210,14 +282,6 @@ describe 'kibana3', :type => :class do
       should contain_package('kibana3').with(
         'ensure' => '_VALUE_'
       )
-    }
-  end
-
-  describe 'on Debian with parameter: pkg_deps' do
-    let (:params) { { :pkg_deps => '_VALUE_' } }
-
-    it {
-      should contain_package('_VALUE_')
     }
   end
 
