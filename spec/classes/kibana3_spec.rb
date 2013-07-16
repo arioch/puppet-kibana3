@@ -15,7 +15,7 @@ describe 'kibana3', :type => :class do
     it { should include_class('kibana3::install') }
     it { should include_class('kibana3::config') }
 
-    #it { should contain_package('kibana3').with_ensure('present') }
+    it { should contain_package('kibana3').with_ensure('present') }
     it { should contain_file('/usr/share/kibana3').with_ensure('directory') }
   end
 
