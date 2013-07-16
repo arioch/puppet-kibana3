@@ -4,28 +4,28 @@
     RailsEnv 'production'
 
     DocumentRoot <%= @config_dir %>
-    ServerName   kibana3.logindexer.vagrant.hostengine.be
+    ServerName   kibana3.<%= @fqdn %>
 
-    ErrorLog  <%= @log_dir %>/_error.log
-    CustomLog <%= @log_dir %>/_access.log combined
+    ErrorLog  <%= @log_dir %>/error.log
+    CustomLog <%= @log_dir %>/access.log combined
     LogLevel warn
 
     # Set global proxy timeouts
     <Proxy http://<%= @elasticsearch_host %>:<%= @elasticsearch_port %>>
-      ProxySet connectiontimeout=5 timeout=90
+        ProxySet connectiontimeout=5 timeout=90
     </Proxy>
 
     # Proxy for _aliases and .*/_search
     <LocationMatch "^(/_aliases|.*/_search)$">
-      ProxyPassMatch http://<%= @elasticsearch_host %>:<%= @elasticsearch_port %>
-      ProxyPassReverse http://<%= @elasticsearch_host %>:<%= @elasticsearch_port %>
+        ProxyPassMatch   http://<%= @elasticsearch_host %>:<%= @elasticsearch_port %>
+        ProxyPassReverse http://<%= @elasticsearch_host %>:<%= @elasticsearch_port %>
     </LocationMatch>
 
     # Proxy for kibana-int/{dashboard,temp} stuff (if you don't want auth on /
     # then you will want these to be protected)
     <LocationMatch "^(/kibana-int/dashboard/|/kibana-int/temp).*$">
-      ProxyPassMatch http://<%= @elasticsearch_host %>:<%= @elasticsearch_port %>
-      ProxyPassReverse http://<%= @elasticsearch_host %>:<%= @elasticsearch_port %>
+        ProxyPassMatch   http://<%= @elasticsearch_host %>:<%= @elasticsearch_port %>
+        ProxyPassReverse http://<%= @elasticsearch_host %>:<%= @elasticsearch_port %>
     </LocationMatch>
 
     <Directory <%= @config_dir %>>
