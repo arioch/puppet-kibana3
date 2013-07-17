@@ -24,6 +24,10 @@ class kibana3::config {
       ensure  => present,
       content => template('kibana3/apache2.conf.erb');
 
+    "${::kibana3::config_dir}/nginx.conf":
+      ensure  => present,
+      content => template('kibana3/nginx.conf.erb');
+
     $::kibana3::log_dir:
       ensure => directory,
       owner  => $::kibana3::daemon_user,
