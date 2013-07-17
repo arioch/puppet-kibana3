@@ -1,5 +1,5 @@
 name          'arioch-kibana3'
-version       '0.0.3'
+version       '0.0.4'
 author        'Tom De Vylder'
 license       'Apache License, Version 2.0'
 summary       'Kibana3 module'
