@@ -1,8 +1,4 @@
 <VirtualHost *:80>
-    RackAutoDetect On
-    PassengerRuby /usr/bin/ruby
-    RailsEnv 'production'
-
     DocumentRoot <%= @config_dir %>
     ServerName   kibana3.<%= @fqdn %>
 
