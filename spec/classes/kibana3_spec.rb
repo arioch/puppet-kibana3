@@ -198,6 +198,13 @@ describe 'kibana3', :type => :class do
         'content' => /ProxyPassReverse.*_VALUE_:/
       )
     }
+
+    it {
+      should contain_file('/usr/share/kibana3/nginx.conf').with(
+        'ensure'  => 'present',
+        'content' => /proxy_pass.*_VALUE_:/
+      )
+    }
   end
 
   describe 'on Debian with parameter: elasticsearch_index' do
@@ -239,6 +246,13 @@ describe 'kibana3', :type => :class do
       should contain_file('/usr/share/kibana3/apache2.conf').with(
         'ensure'  => 'present',
         'content' => /ProxyPassReverse.*:_VALUE_/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/nginx.conf').with(
+        'ensure'  => 'present',
+        'content' => /proxy_pass.*:_VALUE_/
       )
     }
   end
