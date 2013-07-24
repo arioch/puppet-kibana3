@@ -13,7 +13,7 @@ server {
   listen                *:80 ;
 
   server_name           <%= @server_name %>;
-  access_log            /var/log/nginx/kibana3.<%= @fqdn %>.log;
+  access_log            /var/log/nginx/<%= @server_name %>.log;
 
   location / {
     root  <%= @config_dir %>;
