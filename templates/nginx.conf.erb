@@ -10,10 +10,9 @@
 # http://FQDN:<%= @elasticsearch_port %>
 #
 server {
-  listen                *:80 ;
-
-  server_name           <%= @server_name %>;
-  access_log            /var/log/nginx/<%= @server_name %>.log;
+  listen      *:80;
+  server_name <%= @server_name %>;
+  access_log  /var/log/nginx/<%= @server_name %>.log;
 
   location / {
     root  <%= @config_dir %>;
