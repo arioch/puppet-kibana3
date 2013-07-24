@@ -156,20 +156,30 @@ describe 'kibana3', :type => :class do
   end
 
   describe 'with parameter: daemon_group' do
-    let (:params) { { :daemon_group => '_VALUE_' } }
+    let (:params) {
+      {
+        :daemon_group => '_VALUE_',
+        :log_dir      => '_LOG_DIR_'
+      }
+    }
 
     it {
-      should contain_file('/var/log/apache2/kibana3').with(
+      should contain_file('_LOG_DIR_').with(
         'group' => /_VALUE_/
       )
     }
   end
 
   describe 'with parameter: daemon_user' do
-    let (:params) { { :daemon_user => '_VALUE_' } }
+    let (:params) {
+      {
+        :daemon_user => '_VALUE_',
+        :log_dir     => '_LOG_DIR_'
+      }
+    }
 
     it {
-      should contain_file('/var/log/apache2/kibana3').with(
+      should contain_file('_LOG_DIR_').with(
         'owner' => /_VALUE_/
       )
     }
@@ -284,6 +294,13 @@ describe 'kibana3', :type => :class do
       should contain_file('/usr/share/kibana3/apache2.conf').with(
         'ensure'  => 'present',
         'content' => /CustomLog.*_VALUE_/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/nginx.conf').with(
+        'ensure'  => 'present',
+        'content' => /access_log.*_VALUE_/
       )
     }
   end

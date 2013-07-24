@@ -4,6 +4,7 @@ class kibana3::params {
   $elasticsearch_host  = '127.0.0.1'
   $elasticsearch_index = 'kibana-int'
   $elasticsearch_port  = '9200'
+  $log_dir             = undef
   $server_name         = "kibana3.${::fqdn}"
 
   case $::operatingsystem {
@@ -18,7 +19,8 @@ class kibana3::params {
       $config_user        = 'root'
       $daemon_group       = 'apache'
       $daemon_user        = 'apache'
-      $log_dir            = '/var/log/httpd/kibana3'
+      $log_dir_apache     = '/var/log/httpd/kibana3'
+      $log_dir_nginx      = '/var/log/nginx/kibana3'
       $pkg_deps           = undef
       $pkg_ensure         = present
       $pkg_list           = 'kibana3'
@@ -35,7 +37,8 @@ class kibana3::params {
       $config_user        = 'root'
       $daemon_group       = 'www-data'
       $daemon_user        = 'www-data'
-      $log_dir            = '/var/log/apache2/kibana3'
+      $log_dir_apache     = '/var/log/apache2/kibana3'
+      $log_dir_nginx      = '/var/log/nginx/kibana3'
       $pkg_deps           = undef
       $pkg_ensure         = present
       $pkg_list           = 'kibana3'

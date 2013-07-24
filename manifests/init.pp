@@ -80,6 +80,8 @@ class kibana3 (
   $elasticsearch_index = $::kibana3::params::elasticsearch_index,
   $elasticsearch_port  = $::kibana3::params::elasticsearch_port,
   $log_dir             = $::kibana3::params::log_dir,
+  $log_dir_apache      = $::kibana3::params::log_dir_apache,
+  $log_dir_nginx       = $::kibana3::params::log_dir_nginx,
   $manage_repo         = $::kibana3::params::manage_repo,
   $pkg_deps            = $::kibana3::params::pkg_deps,
   $pkg_ensure          = $::kibana3::params::pkg_ensure,

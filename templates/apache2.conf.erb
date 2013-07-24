@@ -2,8 +2,8 @@
     DocumentRoot <%= @config_dir %>
     ServerName   <%= @server_name %>
 
-    ErrorLog  <%= @log_dir %>/error.log
-    CustomLog <%= @log_dir %>/access.log combined
+    ErrorLog  <% if @log_dir %><%= @log_dir %><% else %><%= @log_dir_apache %><% end %>/error.log
+    CustomLog <% if @log_dir %><%= @log_dir %><% else %><%= @log_dir_apache %><% end %>/access.log combined
     LogLevel warn
 
     # Set global proxy timeouts

@@ -27,11 +27,14 @@ class kibana3::config {
     "${::kibana3::config_dir}/nginx.conf":
       ensure  => present,
       content => template('kibana3/nginx.conf.erb');
+  }
 
-    $::kibana3::log_dir:
+  if $::kibana3::log_dir {
+    file { $::kibana3::log_dir:
       ensure => directory,
       owner  => $::kibana3::daemon_user,
       group  => $::kibana3::daemon_group;
+    }
   }
 }
 
