@@ -10,7 +10,7 @@ describe 'kibana3', :type => :class do
     }
   }
 
-  describe 'on Debian without parameters' do
+  describe 'without parameters' do
     it { should create_class('kibana3') }
     it { should include_class('kibana3::install') }
     it { should include_class('kibana3::config') }
@@ -19,7 +19,7 @@ describe 'kibana3', :type => :class do
     it { should contain_file('/usr/share/kibana3').with_ensure('directory') }
   end
 
-  describe 'on Debian with parameter: config_dir' do
+  describe 'with parameter: config_dir' do
     let (:params) { { :config_dir => '_VALUE_' } }
 
     it {
@@ -43,7 +43,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: config_dir_mode' do
+  describe 'with parameter: config_dir_mode' do
     let (:params) {
       {
         :config_dir      => '_CONFIG_DIR_',
@@ -59,7 +59,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: config_dir_recurse' do
+  describe 'with parameter: config_dir_recurse' do
     let (:params) {
       {
         :config_dir         => '_CONFIG_DIR_',
@@ -75,7 +75,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: config_file' do
+  describe 'with parameter: config_file' do
     let (:params) { { :config_file => '_VALUE_' } }
 
     it {
@@ -86,7 +86,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: config_file_mode' do
+  describe 'with parameter: config_file_mode' do
     let (:params) { { :config_file_mode => '_VALUE_' } }
 
     it {
@@ -96,7 +96,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: config_group' do
+  describe 'with parameter: config_group' do
     let (:params) { { :config_group => '_VALUE_' } }
 
     it {
@@ -106,7 +106,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: config_dir_recurse' do
+  describe 'with parameter: config_dir_recurse' do
     let (:params) {
       {
         :config_dir         => '_CONFIG_DIR_',
@@ -122,7 +122,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: config_user' do
+  describe 'with parameter: config_user' do
     let (:params) { { :config_user => '_VALUE_' } }
 
     it {
@@ -132,7 +132,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: config_purge' do
+  describe 'with parameter: config_purge' do
     let (:params) {
       {
         :config_dir   => '_CONFIG_DIR_',
@@ -148,7 +148,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: daemon_group' do
+  describe 'with parameter: daemon_group' do
     let (:params) { { :daemon_group => '_VALUE_' } }
 
     it {
@@ -158,7 +158,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: daemon_user' do
+  describe 'with parameter: daemon_user' do
     let (:params) { { :daemon_user => '_VALUE_' } }
 
     it {
@@ -168,7 +168,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: elasticsearch_host' do
+  describe 'with parameter: elasticsearch_host' do
     let (:params) { { :elasticsearch_host => '_VALUE_' } }
 
     it {
@@ -207,7 +207,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: elasticsearch_index' do
+  describe 'with parameter: elasticsearch_index' do
     let (:params) { { :elasticsearch_index => '_VALUE_' } }
 
     it {
@@ -218,7 +218,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: elasticsearch_port' do
+  describe 'with parameter: elasticsearch_port' do
     let (:params) { { :elasticsearch_port => '_VALUE_' } }
 
     it {
@@ -257,7 +257,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: log_dir' do
+  describe 'with parameter: log_dir' do
     let (:params) { { :log_dir => '_VALUE_' } }
 
     it {
@@ -281,7 +281,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: pkg_deps' do
+  describe 'with parameter: pkg_deps' do
     let (:params) { { :pkg_deps => '_VALUE_' } }
 
     it {
@@ -289,7 +289,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: pkg_ensure' do
+  describe 'with parameter: pkg_ensure' do
     let (:params) { { :pkg_ensure => '_VALUE_' } }
 
     it {
@@ -299,7 +299,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: pkg_list' do
+  describe 'with parameter: pkg_list' do
     let (:params) { { :pkg_list => '_VALUE_' } }
 
     it {
@@ -307,7 +307,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: server_name' do
+  describe 'with parameter: server_name' do
     let (:params) { { :server_name => '_VALUE_' } }
 
     it {
@@ -323,7 +323,7 @@ describe 'kibana3', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: service_name' do
+  describe 'with parameter: service_name' do
     let (:params) { { :service_name => '_VALUE_' } }
 
     it { should create_class('kibana3') }
