@@ -41,6 +41,13 @@ describe 'kibana3', :type => :class do
         'content' => /<Directory.*_VALUE_.*>/
       )
     }
+
+    it {
+      should contain_file('_VALUE_/nginx.conf').with(
+        'ensure'  => 'present',
+        'content' => /root.*_VALUE_.*/
+      )
+    }
   end
 
   describe 'with parameter: config_dir_mode' do
