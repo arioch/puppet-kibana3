@@ -59,6 +59,9 @@
 #                         a number of dependencies.
 #                         Default: operating system specific.
 #
+# $server_name::          Specify the name of the virtual host.
+#                         Default: kibana3.$fqdn
+#
 # $service_name::         Specify the name of the init script.
 #                         Default: operating system specific.
 #
@@ -81,6 +84,7 @@ class kibana3 (
   $pkg_deps            = $::kibana3::params::pkg_deps,
   $pkg_ensure          = $::kibana3::params::pkg_ensure,
   $pkg_list            = $::kibana3::params::pkg_list,
+  $server_name         = $::kibana3::params::server_name,
   $service_name        = $::kibana3::params::service_name,
 ) inherits kibana3::params {
   class { 'kibana3::install': } ->

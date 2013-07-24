@@ -1,6 +1,6 @@
 <VirtualHost *:80>
     DocumentRoot <%= @config_dir %>
-    ServerName   kibana3.<%= @fqdn %>
+    ServerName   <%= @server_name %>
 
     ErrorLog  <%= @log_dir %>/error.log
     CustomLog <%= @log_dir %>/access.log combined

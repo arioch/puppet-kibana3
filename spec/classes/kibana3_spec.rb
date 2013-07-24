@@ -293,6 +293,22 @@ describe 'kibana3', :type => :class do
     }
   end
 
+  describe 'on Debian with parameter: server_name' do
+    let (:params) { { :server_name => '_VALUE_' } }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'content' => /ServerName.*_VALUE_/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/nginx.conf').with(
+        'content' => /server_name.*_VALUE_/
+      )
+    }
+  end
+
   describe 'on Debian with parameter: service_name' do
     let (:params) { { :service_name => '_VALUE_' } }
 
