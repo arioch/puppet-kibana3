@@ -19,8 +19,8 @@ class kibana3::params {
       $config_user        = 'root'
       $daemon_group       = 'apache'
       $daemon_user        = 'apache'
-      $log_dir_apache     = '/var/log/httpd/kibana3'
-      $log_dir_nginx      = '/var/log/nginx/kibana3'
+      $log_dir_apache     = '/var/log/httpd'
+      $log_dir_nginx      = '/var/log/nginx'
       $pkg_deps           = undef
       $pkg_ensure         = present
       $pkg_list           = 'kibana3'
@@ -37,8 +37,8 @@ class kibana3::params {
       $config_user        = 'root'
       $daemon_group       = 'www-data'
       $daemon_user        = 'www-data'
-      $log_dir_apache     = '/var/log/apache2/kibana3'
-      $log_dir_nginx      = '/var/log/nginx/kibana3'
+      $log_dir_apache     = '/var/log/apache2'
+      $log_dir_nginx      = '/var/log/nginx'
       $pkg_deps           = undef
       $pkg_ensure         = present
       $pkg_list           = 'kibana3'
