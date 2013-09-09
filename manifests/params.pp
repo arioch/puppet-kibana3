@@ -1,11 +1,12 @@
 # == Class kibana3::params
 #
 class kibana3::params {
-  $elasticsearch_host  = '127.0.0.1'
-  $elasticsearch_index = 'kibana-int'
-  $elasticsearch_port  = '9200'
-  $log_dir             = undef
-  $server_name         = "kibana3.${::fqdn}"
+  $elasticsearch_secure = false
+  $elasticsearch_host   = '127.0.0.1'
+  $elasticsearch_index  = 'kibana-int'
+  $elasticsearch_port   = '9200'
+  $log_dir              = undef
+  $server_name          = "kibana3.${::fqdn}"
 
   case $::operatingsystem {
     'RedHat': {

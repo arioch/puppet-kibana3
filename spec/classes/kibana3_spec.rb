@@ -185,6 +185,84 @@ describe 'kibana3', :type => :class do
     }
   end
 
+  describe 'with parameter: elasticsearch_secure=false' do
+    let (:params) { { :elasticsearch_secure => false } }
+
+    it {
+      should contain_file('/usr/share/kibana3/config.js').with(
+        'ensure'  => 'present',
+        'content' => /elasticsearch:.*http:/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /http:\/\/.*/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /ProxyPassMatch.*http:/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /ProxyPassReverse.*http:/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/nginx.conf').with(
+        'ensure'  => 'present',
+        'content' => /proxy_pass.*http:/
+      )
+    }
+  end
+
+  describe 'with parameter: elasticsearch_secure=true' do
+    let (:params) { { :elasticsearch_secure => true } }
+
+    it {
+      should contain_file('/usr/share/kibana3/config.js').with(
+        'ensure'  => 'present',
+        'content' => /elasticsearch:.*https:/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /https:\/\/.*/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /ProxyPassMatch.*https:/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/apache2.conf').with(
+        'ensure'  => 'present',
+        'content' => /ProxyPassReverse.*https:/
+      )
+    }
+
+    it {
+      should contain_file('/usr/share/kibana3/nginx.conf').with(
+        'ensure'  => 'present',
+        'content' => /proxy_pass.*https:/
+      )
+    }
+  end
+
   describe 'with parameter: elasticsearch_host' do
     let (:params) { { :elasticsearch_host => '_VALUE_' } }
 

@@ -18,7 +18,7 @@ var config = new Settings(
   // elasticsearch installed on. You probably want to set it to the FQDN of your
   // elasticsearch host
   //elasticsearch:    "http://"+window.location.hostname+":9200",
-  elasticsearch: 'http://<%= @elasticsearch_host -%>:<%= @elasticsearch_port -%>',
+  elasticsearch: '<%= @elasticsearch_protocol -%>://<%= @elasticsearch_host -%>:<%= @elasticsearch_port -%>',
   kibana_index:  "<%= @elasticsearch_index -%>",
   modules:       ['histogram','map','pie','table','stringquery','sort',
                  'timepicker','text','fields','hits','dashcontrol',
