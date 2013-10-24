@@ -8,7 +8,7 @@ class kibana3::params {
   $log_dir              = undef
   $server_name          = "kibana3.${::fqdn}"
 
-  case $::operatingsystem {
+  case $::osfamily {
     'RedHat': {
       $config_dir         = '/usr/share/kibana3'
       $config_dir_mode    = '0755'
@@ -47,7 +47,7 @@ class kibana3::params {
     }
 
     default: {
-      fail "Operating system ${::operatingsystem} is not supported."
+      fail "OS Family ${::osfamily} is not supported."
     }
   }
 }
