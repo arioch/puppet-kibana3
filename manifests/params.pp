@@ -7,6 +7,8 @@ class kibana3::params {
   $elasticsearch_port   = '9200'
   $log_dir              = undef
   $server_name          = "kibana3.${::fqdn}"
+  $config_purge         = false
+  $manage_repo          = false
 
   case $::osfamily {
     'RedHat': {
@@ -16,7 +18,6 @@ class kibana3::params {
       $config_file        = '/usr/share/kibana3/config.js'
       $config_group       = 'root'
       $config_mode        = '0644'
-      $config_purge       = false
       $config_user        = 'root'
       $daemon_group       = 'apache'
       $daemon_user        = 'apache'
